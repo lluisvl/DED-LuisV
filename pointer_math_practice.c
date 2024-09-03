@@ -1,7 +1,8 @@
-/* Libraries */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+
 #define CLEAR printf("\033[0;0H\033[2J");
 
 void ex01();
@@ -9,10 +10,24 @@ void ex02();
 void ex03();
 void ex04();
 
+int mylength(const char *str);  
+void to_lowercase(char *str);
+
 int main()
 {
+    const char *myString = "Hola mundo";
+    printf("Length of the string is: %d\n", mylength(myString));
 
-  return 0;
+    char myString2[] = "Hoa mundo";
+    to_lowercase(myString2);
+    printf("String en minusculas: %s\n", myString2);
+
+    ex01();
+    ex02();
+    ex03();
+    ex04();
+
+    return 0;
 }
 
 void ex01()
@@ -33,17 +48,35 @@ void ex01()
     array[2] = 5 -> addr = 0x00008
     array[3] = 6 -> addr = 0x0000B
 */
+{
+    int array[10];
 
-int array[10];
-int *ptr=array;
+    for (int i = 0; i < 10; i++) {
+        *(array + i) = i * 2; 
+    }
+    for (int i = 0; i < 10; i++) {
+        printf("array[%d] = %d -> addr = %p\n", i, *(array + i), (array + i));
+    }
+}
+int mylength(const char *str) {
+    const char *ptr = str;
+    int length = 0;
 
-for(nt i =0; i<10; i++){
-  *(ptr+i)=(i+1)*3;
+    while (*ptr != '\0') {
+        length++;
+        ptr++;
+    }
+
+    return length;
 }
-for(nt i =0; i<10; i++){
-  printf("array[%d]=%d ->addr =%p\n",i, *(array+1), (array+1));
-}
-return 0;
+
+void to_lowercase(char *str) {
+    while (*str != '\0') {
+        if (*str >= 'A' && *str <= 'Z') {
+            *str = tolower(*str);
+        }
+        str++;
+    }
 }
 
 void ex02()
@@ -56,6 +89,17 @@ void ex02()
 
   TIP: all strings are array of chars, terminated by '\0' character.
 */
+int mylength(const char *str) {
+    const char *ptr = str;
+    int length = 0;
+
+    while (*ptr != '\0') {
+        length++;
+        ptr++;
+    }
+
+    return length;
+}
 }
 
 /* More practice excerises (similar to Ex02)
@@ -73,3 +117,18 @@ void ex02()
   y determine si está formada exclusivamente por dígitos binarios (0, 1). 
   
 */
+void ex03()
+{
+void to_lowercase(char *str) {
+    while (*str != '\0') {
+        if (*str >= 'A' && *str <= 'Z') {
+            *str = tolower(*str);
+        }
+        str++;
+    }
+}
+}
+void ex04()
+{
+
+}
