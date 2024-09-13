@@ -253,12 +253,13 @@ Solo apuntadores y aritmetica de apuntadores.
     50 - x 
     99 - y 
  */
+/*
 void examen04()
 {
   int arreglo[3] = {/*No vale inicializar aqui */};
   char las_letras[3] = {/*No vale inicializar aqui */};
-
   /* ------------------- INICIA RESPUESTA   ------------------ */
+  /*
     *(arreglo+0)=30;
     *(arreglo+1)=50;
     *(arreglo+2)=99;
@@ -267,10 +268,12 @@ void examen04()
     *(las_letras+0)='x';
     *(las_letras+0)='y';
   /* ------------------- FIN RESPUESTA   ------------------ */
+  /*
   for(int i = 0; i < 3; i++)
   {
     printf("%d - %c \n", arreglo[i], las_letras[i]);
   }
+  /*
 }
 int main(){
     examen04();
@@ -296,12 +299,35 @@ int main(){
 */
 /* ------------------- RESPUESTA   ------------------ */
 // Declara tu función aquí
+typedef struct{
+    int  numero;
+    char letra;
+} miEstruc;
 
+int mult_condicional(void* estructura, int num_adicional){
+    miEstruc*mi_estruct=(mi_estruct*)estructura;
+
+    if(mi_estruct->letra=='a'||mi_estruct->letra=='b'||mi_estruct->letra=='c'){
+        return 0;
+    }
+    return mi_estruct->numero*num_adicional;
+}
 
 int examen05()
 {
+    miEstruc estruc1={10,'b'};
+    miEstruc estruc2={5,'x'};
 
+    int res1=mult_condicional(&estruc1,3);
+    int res2=mult_condicional(&estruc2,4);
+
+    printf("resultado 1:%d\n"res1);
+    printf("resultado 2:%d\n"res2);
   return 0;
+}
+int main(){
+    examen05();
+    return 0;
 }
 /* ------------------- RESPUESTA   ------------------ */
 
