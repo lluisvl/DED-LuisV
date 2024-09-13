@@ -249,7 +249,6 @@ respectivamente pero sin utilizar corchetes.
 Solo apuntadores y aritmetica de apuntadores.
 
   Salida esperada:
-  
     30 - z 
     50 - x 
     99 - y 
@@ -260,13 +259,22 @@ void examen04()
   char las_letras[3] = {/*No vale inicializar aqui */};
 
   /* ------------------- INICIA RESPUESTA   ------------------ */
+    *(arreglo+0)=30;
+    *(arreglo+1)=50;
+    *(arreglo+2)=99;
 
+    *(las_letras+0)='z';
+    *(las_letras+0)='x';
+    *(las_letras+0)='y';
   /* ------------------- FIN RESPUESTA   ------------------ */
-  
   for(int i = 0; i < 3; i++)
   {
     printf("%d - %c \n", arreglo[i], las_letras[i]);
   }
+}
+int main(){
+    examen04();
+    return 0;
 }
 
 
