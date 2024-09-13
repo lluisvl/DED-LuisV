@@ -125,6 +125,17 @@ void convertirTemp(float *temperatura , char *tipo){
         *temperatura=(*temperatura-32)*5/9;
         *tipo='c';
     }
+}
+void covertir_multiple_temps(float *temps, char *tipos, int num_temps) {
+    float *ptr_temp = temps;
+    char *ptr_tipo = tipos;
+
+    for (int i = 0; i < num_temps; i++) {
+        convertirTemp(ptr_temp, ptr_tipo);
+        ptr_temp++;
+        ptr_tipo++;
+    }
+}
 /* ------------------- FIN DE RESPUESTA   ------------------ */
 
 
@@ -137,6 +148,7 @@ int examen02()
 
   /* ------------------- INICIO RESPUESTA   ------------------ */
   //covertir_temp(?,?);
+  convertirTemp(&grados, &tipo);
   /* ------------------- FIN DE RESPUESTA   ------------------ */
   
   printf("Que equivale a: %.2f °%c\n", grados, tipo);
@@ -148,6 +160,7 @@ int examen02()
 
   /* ------------------- INICIO RESPUESTA   ------------------ */
   //covertir_temp(?,?);
+  convertirTemp(&grados,&tipo);
   /* ------------------- FIN DE RESPUESTA   ------------------ */
 
   printf("Que equivale a: %.2f °%c\n", grados, tipo);
@@ -166,6 +179,8 @@ int examen02()
  char tipos[4] = {'C','F','C','F'};
  float temps[4] = {45, 110, 0, 0};
  int num_temps = 4;
+
+ covertir_multiple_temps(temps,tipos,num_temps);
 
  //convert_multiple_temps();  DESCOMENTA Y TERMINA .... 
   
