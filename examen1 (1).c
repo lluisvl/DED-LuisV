@@ -32,10 +32,10 @@ Alumno: _________________
     R: la diferencia esta en como se manejan los parametros de una funcion y como se pasan los datos y como afecta las variables originales  
 
   4: Qué es necesario hacer para acceder a los datos de una variable de tipo void *?
-    R: 
+    R:  como void es generico no s epude acceder directamente para eso hay q hacer un cast al tipo de dato correcto 
 
   5: Cómo se recomienda inicializar un apuntador, y por qué es importante esta práctica?
-    R:
+    R: es importante para evitar errores relacionados con el acceso de la memoria no valida o no controlada y para inicializarlo hay q inicializar un null, asignar la memoria, comprobar si el apuntador es null antes de usarlo y liberar la memoria dinamica 
 
 */
 
@@ -62,19 +62,30 @@ de texto, no esta permitido utilizar corchetes [] ni la funcion strlen.
 Pruebe que su programa funcione con los ejemplos programados
 */
 /*------------------- INICIO RESPUESTA   ------------------ */
- 
-   
+ /*
+void desencrip (char * palabra){
+    char * ptr=palabra;
+    int posicion=1;
+
+    while(*ptr!='\0'){
+        if (posicion % 2!=0){
+            *ptr=*ptr +1;
+        } else {
+            *ptr = *ptr-2;
+        }
+        ptr++;
+        posicion ++;
+    }
+}
 
 /* ------------------- FIN DE RESPUESTA   ------------------ */
-
+/*
 int examen01()
 {
   char secreto[10] = "Ewmehqmc";
   printf("Palabra secreta: %s\n",secreto);
   // INICIO RESPUESTA
-    //Llama tu funcion aqui, pruebala con la variable secreto.
-    //Prueba con mas cadenas para garantizar su funcionamiento.
-  
+    desencrip(secreto);
   // FIN DE RESPUESTA
   
   printf("%s", secreto);
@@ -82,7 +93,11 @@ int examen01()
  
   return 0;
 }
-
+int main(){
+    examen01();
+    return 0;
+}
+*/
 
 /* ################      EJERCICIO 02 :    ################################ 
    ################         15 pts         ################################ 
@@ -102,7 +117,11 @@ int examen01()
 
 /* ------------------- INICIO RESPUESTA   ------------------ */
 //Para la función.
-
+void convertirTemp(float *temperatura , char *tipo){
+    if(*tipo =='c' ||*tipo =='c'){
+        *temperatura=(*temperatura*9/5)+32;
+    }
+}
 /* ------------------- FIN DE RESPUESTA   ------------------ */
 
 
@@ -169,7 +188,7 @@ void cuadrado(int *num)
 int triplica (int *num)
 {
   *num = (*num + *num + *num);
-  return;
+  return *num;
 }
 
 char * convierte(int *ascii, char ** modificador)
