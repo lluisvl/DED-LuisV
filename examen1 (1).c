@@ -120,7 +120,8 @@ int main(){
 void convertirTemp(float *temperatura , char *tipo){
     if(*tipo =='c' ||*tipo =='c'){
         *temperatura=(*temperatura*9/5)+32;
-    }
+        *tipo='f';
+    } else if (*tipo=='f')
 }
 /* ------------------- FIN DE RESPUESTA   ------------------ */
 
