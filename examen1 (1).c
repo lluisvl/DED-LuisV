@@ -117,6 +117,7 @@ int main(){
 
 /* ------------------- INICIO RESPUESTA   ------------------ */
 //Para la función.
+/*
 void convertirTemp(float *temperatura , char *tipo){
     if(*tipo =='c' ||*tipo =='c'){
         *temperatura=(*temperatura*9/5)+32;
@@ -138,7 +139,7 @@ void covertir_multiple_temps(float *temps, char *tipos, int num_temps) {
 }
 /* ------------------- FIN DE RESPUESTA   ------------------ */
 
-
+/*
 int examen02()
 {
   char tipo = 'F';      //F = Fahrenheit y C = Celcius
@@ -148,23 +149,25 @@ int examen02()
 
   /* ------------------- INICIO RESPUESTA   ------------------ */
   //covertir_temp(?,?);
+  /*
   convertirTemp(&grados, &tipo);
   /* ------------------- FIN DE RESPUESTA   ------------------ */
-  
+  /*
   printf("Que equivale a: %.2f °%c\n", grados, tipo);
-  
+  /*
   /* Ahora al revés*/
+  /*
   tipo = 'C';
   grados = 21;
   printf("Temperatura actual es de: %.2f °%c\n", grados, tipo);
-
+*/
   /* ------------------- INICIO RESPUESTA   ------------------ */
   //covertir_temp(?,?);
+  /*
   convertirTemp(&grados,&tipo);
   /* ------------------- FIN DE RESPUESTA   ------------------ */
-
+  /*
   printf("Que equivale a: %.2f °%c\n", grados, tipo);
-
   /*El programa debera imprimir: 
     Temperatura actual es de: 35 °F
     Que equivale a: 1.67 °C
@@ -172,10 +175,11 @@ int examen02()
     Mi dinero convertido es: 69.8 °F  
  */
 
-
+/*
  /* Por 10 puntos extras: Crea una función llamada covertir_multiple_temps
  que pueda recibir un arreglo de temperaturas y haga funcionar el siguiente
  codigo :  (NOTA, no usar [] en la función) */
+ /*
  char tipos[4] = {'C','F','C','F'};
  float temps[4] = {45, 110, 0, 0};
  int num_temps = 4;
@@ -191,13 +195,14 @@ int examen02()
   
   return 0;
 }
-
+*/
 
 /* ################      EJERCICIO 03 :    ################################ 
 ################            10 pts         ################################ 
 Declara el numero de apuntadores a funcion necesarios para poder
 llamar las siguientes 5 funciones. Utiliza el Typedef para crear un nuevo 
 tipo de dato apuntador para cada uno de los punteros a funcion que necesites */
+/*
 void cuadrado(int *num)   
 {
   *num = *num * *num;
@@ -227,9 +232,13 @@ int escribe_doble(int *num, char letra)
 
 /* Declara tus punteros a funcion aqui: */
 /* ------------------- INICIO RESPUESTA   ------------------ */
-
+/*
+typedef void (*pf_cuadrado)(int*);
+typedef int (*pf_triplica)(int*);
+typedef char* (*pf_convierte)(int*, char**);
+typedef int (*pf_duplica)(int*);
+typedef int (*pf_escribe_doble)(int*,char);
 /* ------------------- FIN DE RESPUESTA   ------------------ */
-
 /* Fin ejercicio 03 */
 
 
