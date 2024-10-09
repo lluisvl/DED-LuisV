@@ -61,10 +61,24 @@ int main()
   /* #1 :
   Crea una funcion newNode(n) que cree un nuevo node con valor n,
   y devuelva el puntero al nodo recien creado */
+  struct Node* newNode(int n){
+    struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+    node->data = n;
+    node->next = NULL;
 
+    return node;
+}
+  }
   /* #2:
   Utilizando esta funcion, crea un nodo nuevo para que actue como el primer
   elemento "header" de nuestra lista  */
+  {
+    struct Node* header = newNode(0);
+    printf("valor del nodo: %d\n", header->data);
+    free(header);
+
+    return 0;
+}
 
   /* #3:
   Crea 5 nodos adicionales, para tener una lista total de 5 nodos
@@ -84,6 +98,17 @@ int main()
   debera verse de esta forma:
     1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 -> NULL
   */
+ void printList(struct Node* head) {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d", temp->data);  
+        if (temp->next != NULL) {
+            printf(" -> ");
+        }
+        temp = temp->next;  
+    }
+    printf(" -> NULL\n");  
+}
 
   //se llamara asi:
   //printlist(header);
