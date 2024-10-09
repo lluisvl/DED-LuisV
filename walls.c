@@ -101,6 +101,19 @@ printf("\n");
 void expand(node *h)
 {
 /* TU CODIGO INICIA AQUI */
+while (h !=NULL){
+    if(h-> down !=NULL){
+        node*tmp =h->down;
+        h->down=NULL;
+        node *nextNode = h->next;
+        h->next = tmp;
+        while (tmp->next != NULL) {
+            tmp = tmp->next;
+    }
+    tmp->next = nextNode;
+}
+h = h->next;
+}
 /* TU CODIGO TERMINA AQUI */
 }
 int main()
