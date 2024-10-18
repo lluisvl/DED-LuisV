@@ -1,81 +1,65 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Estructura para crear un nodo del stack
 typedef struct stack_node {
-    int info;
+    char info;
     struct stack_node *prev;
 } stack_node;
 
-/* STACK GLOBAL */
+// Puntero global para el tope del stack
 stack_node *stack_top = NULL;
-int count = 0;
 
-void push(int data) {
+// Operación Push() para añadir elementos al stack
+void push(char data) {
     stack_node *new_node = (stack_node *)malloc(sizeof(stack_node));
     if (new_node == NULL) {
-        printf("\nMemory allocation failed\n");
+        printf("error al asignar la memoria\n");
         return;
     }
     new_node->info = data;
-    new_node->prev = stack_top; 
+    new_node->prev = stack_top;
     stack_top = new_node;
-    count++;
 }
 
-// Para esta version de stack de enteros, regresa -1 si no hay
-// nada que hacer pop
-int pop() {
+// Para esta versión de stack de caracteres, regresa -1 si no hay nada que hacer pop
+char pop() {
     if (stack_top == NULL) {
-        printf("\nStack Underflow\n");
-        return -1;
+        return '\0';
     }
-    int data = stack_top->info;
+    char popped_value = stack_top->info;
     stack_node *temp = stack_top;
     stack_top = stack_top->prev;
     free(temp);
-    count--;
-    return data;
+    return popped_value;
 }
 
-// Muestra los elementos actuales del stack
-void display() {
-    stack_node *nptr = stack_top;
-    if (nptr == NULL) {
-        printf("\nStack Underflow\n");
-        return;
+void isvalidformula(char *f) {
+    stack_top = NULL;
+    
+    for (int i = 0; f[i] != '\0'; i++) {
+        if (f[i] == '(') {
+            push(f[i]);
+        } else if (f[i] == ')') {
+            if (pop() == '\0') {
+                printf("La formula \"%s\" no esta bien hecha\n", f);
+                return;
+            }
+        }
     }
-    printf("The stack is:\n");
-    while (nptr != NULL) {
-        printf("%d--->", nptr->info);
-        nptr = nptr->prev;
+    if (stack_top != NULL) {
+        printf("La formula \"%s\" no esta bien hecha\n", f);
+    } else {
+        printf("La frmula \"%s\" esta bien hecha\n", f);
     }
-    printf("NULL\n\n");
 }
 
 int main() {
-    int choice, value, ret;
-    printf("\nSTACK:\n");
-    while (1) {
-        printf("\n1. Push\n2. Pop\n3. Display\n4. Exit\n");
-        printf("\n\tChoice : ");
-        ret = scanf("%d", &choice);
-        switch (choice) {
-            case 1:
-                printf("\tEnter the value to insert: ");
-                ret = scanf("%d", &value);
-                push(value);
-                break;
-            case 2:
-                printf("Popped element is : %d\n", pop());
-                break;
-            case 3:
-                display();
-                break;
-            case 4:
-                exit(0);
-                break;
-            default:
-                printf("\nWrong Choice\n");
-        }
-    }
+    char formula1[30] = "aa()bb((c))(ddd((rr((a)a)))";
+    char formula2[30] = "((a+b)-(z*d))";
+    
+    isvalidformula(formula1);
+    isvalidformula(formula2);
+    
+    return 0;
 }
