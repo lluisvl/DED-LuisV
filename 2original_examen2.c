@@ -93,10 +93,33 @@ node LD1nuevo, LD2nuevo;
 
 
 /* ----------  INICIO RESPUESTA:  --------------- */
-struct Node* mover_ultimo_primero (struct Node* head);
-void printlist(struct Node* next);
+struct Node* mover_ultimo_primero(struct Node* head);
+void printlist(struct Node* head);
 
-struct 
+struct Node * mover_ultimo_primero(struct Node* head){
+  if(head =NULL|| head -> txt=NULL){
+    return head;
+  }
+  struct Node* second_last = NULL;
+  struct Node* last = head;
+
+  while (last->next != NULL) {
+    second_last = last;  
+    last = last->next;
+  }
+  second_last->next = NULL;
+  last->next = head;      
+  return last; 
+}
+void printlist(struct Node* head) {
+    struct Node* current = head;
+    while (current != NULL) {
+        printf("%d -> ", current->value);
+        current = current->next;
+    }
+    printf("Null\n");
+}
+
 /* ----------  FIN RESPUESTA:  --------------- */
 
 
@@ -158,7 +181,7 @@ int ex01()
 
 /* ----------  FIN RESPUESTA:  --------------- */
 
-int ex02()
+/*int ex02()
 {
   /* NO TOCAR, inicalizacion de listas demo LD1 y LD2 */
   LD1n1.value=1; LD1n2.value=2; LD1n3.value=3; LD1n4.value=4;
