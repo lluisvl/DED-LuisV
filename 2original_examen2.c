@@ -93,12 +93,10 @@ node LD1nuevo, LD2nuevo;
 
 
 /* ----------  INICIO RESPUESTA:  --------------- */
-struct Node* mover_primero_ultimo(struct Node* head) {
-    if (head == NULL || head->next == NULL) {
-        return head;
-    }
+struct Node* mover_ultimo_primero (struct Node* head);
+void printlist(struct Node* next);
 
-
+struct 
 /* ----------  FIN RESPUESTA:  --------------- */
 
 
