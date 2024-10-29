@@ -317,7 +317,25 @@ int ex04()
 int ex05()
 {
   /* ----------  INICIO RESPUESTA:  --------------- */
+  void leerContra(const char *password.data){
+    FILE*file =fopen (password.data, "rb");
+    if(file==NULL){
+      perror("No se pudo abrir el archivo");
+      return 
+    }
+    int key = 123456;
+    int currentInt;
+    char password[50];
 
+    while (fread(&currentInt, sizeof(int), 1, file) == 1) {
+      if (currentInt == key) {
+        fread(password, sizeof(char), 50, file);
+        printf("Contrasena encontrada %s\n", password);
+        fclose(file);
+        return;
+      }
+    }
+  }
  /* ----------  FIN RESPUESTA:  --------------- */
   return 0;
 }
@@ -342,7 +360,19 @@ int ex05()
   */
 
 /* ----------  INICIO RESPUESTA:  --------------- */
-//Agrega aquí tus estructuras, funciones del Stack, y función "reverse".
+void reverseString(char* str) {
+  int length = strlen(str);
+  int start = 0;
+  int end = length - 1;
+
+  while (start < end) {
+    char temp = str[start];
+    str[start] = str[end];
+    str[end] = temp;
+    start++;
+    end--;
+  }
+}
 
 /* ----------  FIN RESPUESTA:  --------------- */
 
@@ -351,7 +381,7 @@ void ex06()
   char prueba[10] = "ITESO";
   printf("%s\n", prueba); //Debe imprimir "ITESO"
   /* ----------  INICIO RESPUESTA:  --------------- */
-  //Llama tu función aquí.
+  reverseString(str);
 
   /* ----------  FIN RESPUESTA:  --------------- */
   printf("%s\n", prueba); //Debe imprimir "OSETI"
