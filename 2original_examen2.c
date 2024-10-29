@@ -96,28 +96,30 @@ node LD1nuevo, LD2nuevo;
 struct Node* mover_ultimo_primero(struct Node* head);
 void printlist(struct Node* head);
 
-struct Node * mover_ultimo_primero(struct Node* head){
-  if(head =NULL|| head -> txt=NULL){
-    return head;
-  }
-  struct Node* second_last = NULL;
-  struct Node* last = head;
-
-  while (last->next != NULL) {
-    second_last = last;  
-    last = last->next;
-  }
-  second_last->next = NULL;
-  last->next = head;      
-  return last; 
-}
-void printlist(struct Node* head) {
-    struct Node* current = head;
-    while (current != NULL) {
-        printf("%d -> ", current->value);
-        current = current->next;
+struct Node* mover_ultimo_primero(struct Node* head) {
+    if (head == NULL || head->next == NULL) {
+      return head;
     }
-    printf("Null\n");
+
+    struct Node* second_last = NULL;
+    struct Node* last = head;
+
+    while (last->next != NULL) {
+      second_last = last;  
+      last = last->next;
+    }
+    second_last->next = NULL;
+    last->next = head;
+    return last;
+}
+
+void printlist(struct Node* head) {
+  struct Node* current = head;
+    while (current != NULL) {
+      printf("%d -> ", current->value);
+      current = current->next;
+    }
+  printf("Null\n");
 }
 
 /* ----------  FIN RESPUESTA:  --------------- */
@@ -140,7 +142,13 @@ int ex01()
   /* NO TOCAR */
 
 /* ----------  INICIO RESPUESTA:  --------------- */
-// Espacio para que mandes llamar tu función y compruebes el resultado.
+  struct Node L1n1, L1n2, L1n3, L1n4;
+  struct Node L2n1, L2n2, L2n3, L2n4, L2n5;    
+  struct Node* L1;
+  struct Node* L2;
+  
+  L1 = mover_ultimo_primero(L1);
+  L2 = mover_ultimo_primero(L2);
 
 /* ----------  FIN RESPUESTA:  --------------- */
   
@@ -178,7 +186,55 @@ int ex01()
 */
 
 /* ----------  INICIO RESPUESTA:  --------------- */
+void inseetMiddle (struct Node* head , struct Node* newNode);
+void printlist(struct Node* head);
+void printlistBack(struct Node* tail);
 
+void insertMiddle(struct Node* head, struct Node* newNode) {
+  if (head == NULL || newNode == NULL) {
+    return;
+  }
+  struct Node* current = head;
+  int count = 0;
+
+  while (current != NULL) {
+    count++;
+    current = current->next;
+  }
+  current = head;
+  for (int i=0; i <count/ 2; i++) {
+    current = current->next;
+  }
+  newNode->next = current; 
+  newNode->prev = current->prev; 
+
+  if (current->prev != NULL) {
+    current->prev->next = newNode;
+  }
+  current->prev = newNode;
+    
+  if (current == head) {
+    head = newNode; 
+  }
+}
+
+void printlist(struct Node* head) {
+  struct Node* current = head;
+  while (current != NULL) {
+    printf("<-> %d ", current->value);
+    current = current->next;
+  }
+  printf("<-> Null\n");
+}
+
+void printlistBack(struct Node* tail) {
+  struct Node* current = tail;
+  while (current != NULL) {
+    printf("<-> %d ", current->value);
+    current = current->prev;
+  }
+  printf("<-> Null\n");
+}
 /* ----------  FIN RESPUESTA:  --------------- */
 
 /*int ex02()
