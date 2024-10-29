@@ -285,6 +285,25 @@ int ex03()
 {
   /* ----------  INICIO DE RESPUESTA:  --------------- */
 
+    struct Node** listas = malloc(6 * sizeof(struct Node*));
+    if (listas == NULL) {
+        fprintf(stderr, "Error al asignar memoria.\n");
+        return -1; 
+    }
+
+    listas[0] = L1;
+    listas[1] = L2;
+    listas[2] = LD1;
+    listas[3] = LD2;
+
+    listas[4] = NULL;
+    listas[5] = NULL;
+
+    for (int i = 0; i < 4; i++) {
+        printf("Lista %d:\n", i + 1);
+        printlist(listas[i]);
+    }
+    free(listas);
   /* ----------  FIN DE RESPUESTA:  --------------- */
   return 0;
 }
@@ -321,7 +340,25 @@ int ex03()
 int ex04()
 {
 /* ----------  INICIO RESPUESTA:  --------------- */
-  
+  FILE *file;
+  int num_registros, i;
+  char **ciudades;
+  int *costos;
+
+  file = fopen("destinos.txt", "r");
+  if (file == NULL) {
+      printf("no se pudo abrir el archivo\n");
+      return 1;
+  }
+  fscanf(file, "%d", &num_registros);
+  ciudades = (char**)malloc(num_registros * sizeof(char*));
+  costos = (int*)malloc(num_registros * sizeof(int));
+
+  if (ciudades == NULL || costos == NULL) {
+    printf("error en asignar la memoria\n");
+    close(file);
+    return 1;
+  }
 /* ----------  FIN RESPUESTA:  --------------- */
   return 0;
 }
