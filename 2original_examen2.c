@@ -247,7 +247,17 @@ int ex02()
 int ex03()
 {
   /* ----------  INICIO DE RESPUESTA:  --------------- */
-  void crearLista(node* L1, node* L2, )
+  void crearLista(node* L1, node* L2, dnode * LD1, dnode * LD2){
+    void* ListArray [4];
+    listArray[0] = L1;
+    listArray[1] = L2;
+    listArray[2] = LD1;
+    listArray[3] = LD2;
+
+    for (int i = 0; i < 4; i++) {
+      printf("list %d pointer: %p\\n", i + 1, listArray[i]);
+    }
+  }
   /* ----------  FIN DE RESPUESTA:  --------------- */
   return 0;
 }
@@ -284,7 +294,7 @@ int ex03()
 int ex04()
 {
 /* ----------  INICIO RESPUESTA:  --------------- */
-  
+  void leerDestinos (const char* )
 /* ----------  FIN RESPUESTA:  --------------- */
   return 0;
 }
