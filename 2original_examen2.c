@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <string.h>
 
-char alumno[100] = "luis leal";
+char alumno[100] = "Escribe tu nombre aquí";
 
 /*  
 
@@ -93,33 +93,22 @@ node LD1nuevo, LD2nuevo;
 
 
 /* ----------  INICIO RESPUESTA:  --------------- */
-struct Node* mover_ultimo_primero(struct Node* head);
-void printlist(struct Node* head);
+node* moveToFront(node* head) {
+  if (head == NULL || head->next == NULL) {
+    return head; 
+  }
+  node* prev = NULL;
+  node* current = head;
 
-struct Node* mover_ultimo_primero(struct Node* head) {
-    if (head == NULL || head->next == NULL) {
-      return head;
-    }
-
-    struct Node* second_last = NULL;
-    struct Node* last = head;
-
-    while (last->next != NULL) {
-      second_last = last;  
-      last = last->next;
-    }
-    second_last->next = NULL;
-    last->next = head;
-    return last;
-}
-
-void printlist(struct Node* head) {
-  struct Node* current = head;
-    while (current != NULL) {
-      printf("%d -> ", current->value);
-      current = current->next;
-    }
-  printf("Null\n");
+  while (current->next != NULL) {
+    prev = current;
+    current = current->next;
+  }
+  prev->next = NULL; 
+  current->next = head;
+  head = current;
+  
+  return head;
 }
 
 /* ----------  FIN RESPUESTA:  --------------- */
@@ -142,13 +131,7 @@ int ex01()
   /* NO TOCAR */
 
 /* ----------  INICIO RESPUESTA:  --------------- */
-  struct Node L1n1, L1n2, L1n3, L1n4;
-  struct Node L2n1, L2n2, L2n3, L2n4, L2n5;    
-  struct Node* L1;
-  struct Node* L2;
-  
-  L1 = mover_ultimo_primero(L1);
-  L2 = mover_ultimo_primero(L2);
+// Espacio para que mandes llamar tu función y compruebes el resultado.
 
 /* ----------  FIN RESPUESTA:  --------------- */
   
@@ -186,58 +169,38 @@ int ex01()
 */
 
 /* ----------  INICIO RESPUESTA:  --------------- */
-void inseetMiddle (struct Node* head , struct Node* newNode);
-void printlist(struct Node* head);
-void printlistBack(struct Node* tail);
-
-void insertMiddle(struct Node* head, struct Node* newNode) {
-  if (head == NULL || newNode == NULL) {
+void insertMiddle(dnode** head_ref, dnode* new_node) {
+  if (*head_ref == NULL) {
+    *head_ref = new_node; 
     return;
   }
-  struct Node* current = head;
-  int count = 0;
 
-  while (current != NULL) {
-    count++;
+  int length = 0; 
+  dnode* temp = *head_ref;
+  while (temp != NULL) {
+    length++;
+    temp = temp->next;
+  }
+
+  int middle = length / 2;
+
+  dnode* current = *head_ref;
+  for (int i = 0; i < middle - 1; i++) {
     current = current->next;
   }
-  current = head;
-  for (int i=0; i <count/ 2; i++) {
-    current = current->next;
-  }
-  newNode->next = current; 
-  newNode->prev = current->prev; 
 
-  if (current->prev != NULL) {
-    current->prev->next = newNode;
+  new_node->next = current->next;
+  new_node->prev = current;
+
+  if (current->next != NULL) {
+    current->next->prev = new_node;
   }
-  current->prev = newNode;
-    
-  if (current == head) {
-    head = newNode; 
-  }
+  current->next = new_node;
 }
 
-void printlist(struct Node* head) {
-  struct Node* current = head;
-  while (current != NULL) {
-    printf("<-> %d ", current->value);
-    current = current->next;
-  }
-  printf("<-> Null\n");
-}
-
-void printlistBack(struct Node* tail) {
-  struct Node* current = tail;
-  while (current != NULL) {
-    printf("<-> %d ", current->value);
-    current = current->prev;
-  }
-  printf("<-> Null\n");
-}
 /* ----------  FIN RESPUESTA:  --------------- */
 
-/*int ex02()
+int ex02()
 {
   /* NO TOCAR, inicalizacion de listas demo LD1 y LD2 */
   LD1n1.value=1; LD1n2.value=2; LD1n3.value=3; LD1n4.value=4;
@@ -284,26 +247,7 @@ void printlistBack(struct Node* tail) {
 int ex03()
 {
   /* ----------  INICIO DE RESPUESTA:  --------------- */
-
-    struct Node** listas = malloc(6 * sizeof(struct Node*));
-    if (listas == NULL) {
-        fprintf(stderr, "Error al asignar memoria.\n");
-        return -1; 
-    }
-
-    listas[0] = L1;
-    listas[1] = L2;
-    listas[2] = LD1;
-    listas[3] = LD2;
-
-    listas[4] = NULL;
-    listas[5] = NULL;
-
-    for (int i = 0; i < 4; i++) {
-        printf("Lista %d:\n", i + 1);
-        printlist(listas[i]);
-    }
-    free(listas);
+  void crearLista(node* L1, node* L2, )
   /* ----------  FIN DE RESPUESTA:  --------------- */
   return 0;
 }
@@ -340,25 +284,7 @@ int ex03()
 int ex04()
 {
 /* ----------  INICIO RESPUESTA:  --------------- */
-  FILE *file;
-  int num_registros, i;
-  char **ciudades;
-  int *costos;
-
-  file = fopen("destinos.txt", "r");
-  if (file == NULL) {
-      printf("no se pudo abrir el archivo\n");
-      return 1;
-  }
-  fscanf(file, "%d", &num_registros);
-  ciudades = (char**)malloc(num_registros * sizeof(char*));
-  costos = (int*)malloc(num_registros * sizeof(int));
-
-  if (ciudades == NULL || costos == NULL) {
-    printf("error en asignar la memoria\n");
-    close(file);
-    return 1;
-  }
+  
 /* ----------  FIN RESPUESTA:  --------------- */
   return 0;
 }
