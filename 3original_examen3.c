@@ -66,11 +66,10 @@ char alumno[100] = "luis leal";
           /      \
         3         16
       /   \      /   \
-    1      8   11     18 
-   /     /    / \      \
-  0     6   14   13     20
-       /
-      5
+    1      8   14     18 
+   / \    /    / \     
+  0   5  6   13   20     
+
 
 8) Asume que se crea un montículo binario "máximo" a partir del siguiente arreglo.:
     4, 7, 10, 5, 12, 15, 22, 8, 17, 1
@@ -293,7 +292,30 @@ typedef struct color
 
 /* INCIA RESPUESTA */
 // aqui va una función que el priority queue necesita para funcionar
+typedef struct {
+  Color items[MAX_QUEUE_SIZE];
+  int size;
+} PriorityQueue;
 
+void initQueue(PriorityQueue *queue) {
+  queue->size = 0;
+}
+
+int compareColors(Color c1, Color c2) {
+  if (c1.r != c2.r) {
+    return c2.r - c1.r; 
+  }
+  return c2.b - c1.b;
+}
+
+void enqueue(PriorityQueue *queue, Color color){
+  if (queue->size >= MAX_QUEUE_SIZE) {
+    printf("Hay un error, la cola esta llena\n");
+    return;
+  }
+
+  queue->items[queue->size] = color;
+  queue->size++;
 
 /* TERMINA RESPUESTA */
 
