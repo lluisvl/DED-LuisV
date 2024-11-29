@@ -66,10 +66,11 @@ char alumno[100] = "luis leal";
           /      \
         3         16
       /   \      /   \
-    1      8   14     18 
-   /     /    /  \       \
-  0     6    13   15       20
-
+    1      8   11     18 
+   /     /    / \      \
+  0     6   14   13     20
+       /
+      5
 
 8) Asume que se crea un montículo binario "máximo" a partir del siguiente arreglo.:
     4, 7, 10, 5, 12, 15, 22, 8, 17, 1
@@ -87,15 +88,23 @@ char alumno[100] = "luis leal";
  
       R=       22
              /   \
+            18   15
+          /  \   / \
+         17   12 10  7
+        / \
+       8   5
+      /
+     4 
+
+    b) ¿Cómo queda el montículo binario (MaxHeap) de arriba después de ejecutar poll()? Puedes mostrar la respuesta como montículo binario (dibujo) o como arreglo.
+
+      R=       18
+             /   \
             17   15
           /  \   / \
          8   12 10  7
         / \
-       4   5
-
-    b) ¿Cómo queda el montículo binario (MaxHeap) de arriba después de ejecutar poll()? Puedes mostrar la respuesta como montículo binario (dibujo) o como arreglo.
-
-      R=
+       4   5 
 
 9)	Asume que existe una Tabla Hash que almacena fechas, y se encuentra en el siguiente estado:
 
