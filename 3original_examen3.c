@@ -62,18 +62,36 @@ char alumno[100] = "luis leal";
    /     /              \
   0     6                20
 
-  R=
+  R=         10
+          /      \
+        3         16
+      /   \      /   \
+    1      8   14     18 
+   /     /    /  \       \
+  0     6    13   15       20
 
 
 8) Asume que se crea un montículo binario "máximo" a partir del siguiente arreglo.:
     4, 7, 10, 5, 12, 15, 22, 8, 17, 1
     a) ¿Cómo queda el montículo binario (MaxHeap) inicialmente?  Puedes mostrar la respuesta como montículo binario (dibujo) o como arreglo.
  
-      R=
+      R=       22
+             /   \
+            17   15
+          /  \   / \
+         8   12 10  7
+        / \
+       4   5
 
     b) ¿Cómo queda el montículo binario (MaxHeap) de arriba después de ejecutar offer(18)?  Puedes mostrar la respuesta como montículo binario (dibujo) o como arreglo.
  
-      R=
+      R=       22
+             /   \
+            17   15
+          /  \   / \
+         8   12 10  7
+        / \
+       4   5
 
     b) ¿Cómo queda el montículo binario (MaxHeap) de arriba después de ejecutar poll()? Puedes mostrar la respuesta como montículo binario (dibujo) o como arreglo.
 
