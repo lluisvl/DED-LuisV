@@ -133,6 +133,15 @@ Asume que el hashing se hace de la siguiente manera:
   Dibuja la Tabla Hash resultante después de ejecutar map_put("02/02/2000") y map_put("11/11/1111");
   
   R=
+  HashIndex
+  0 -> |31/10/1987| -> NULL
+  1 -> |02/06/2012| -> |19/01/1123| -> NULL
+  2 -> |01/01/2024| -> |28/05/1546| -> |02/02/2000| -> NULL
+  3 -> |11/11/1111| -> NULL
+  4 -> |03/11/1990| -> NULL
+  5 -> |31/12/1987| -> |15/03/2025| -> |19/07/1999| -> NULL
+  6 -> |31/08/2005| -> NULL
+
 
 
 10)	Acabas de instalar la siguiente librería para el uso de colas simples:
@@ -181,7 +190,8 @@ Asume que el hashing se hace de la siguiente manera:
 
   Escribe o dibuja el estado final de la cola "q".
 
-  R= 
+  R= ["Jorge", "Sofia", "Erick", "Diego", "Nicole"]
+
 
 
 ******************************************************** Ejercicio 1: Mapa                 /20 pts **************************************************************
