@@ -214,7 +214,33 @@ Asume que el hashing se hace de la siguiente manera:
 */
 /* INICIA RESPUESTA */
 // El mapa necesita 2 funciones y tal vez una estructura, declaralas aqui:
+#define MAX_MAP_SIZE 100
 
+typedefstruct{
+  int key ;
+  int value;
+} MapEntry;
+
+typedef struct {
+  MapEntry entries[MAX_MAP_SIZE];
+  int size;
+} Map;
+
+void initMap(Map *map) {
+  map->size = 0;
+}
+void put(Map *map, int key) {
+  for (int i = 0; i < map->size; i++) {
+      if (map->entries[i].key == key) {
+        map->entries[i].value++;
+        return;
+      }
+  }
+    // Si no existe la clave, se agrega una nueva entrada
+    map->entries[map->size].key = key;
+    map->entries[map->size].value = 1;
+    map->size++;
+}
 
 /* FIN DE RESPUESTA */
 
