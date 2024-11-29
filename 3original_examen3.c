@@ -32,23 +32,23 @@ char alumno[100] = "luis leal";
 
 2)  Menciona una diferencia entre una cola (ordinaria) y una cola de prioridad, desde el punto de vista de su comportamiento, no de su implementación:
 
-  R= en una cola ordinaria los elemntos se procesan en el orden en el que fueron anadidos mientras que en el otro 
+  R= en una cola ordinaria los elemntos se procesan en el orden en el que fueron anadidos mientras que en el otro se procesan en funcion de su prioridad independientemente del orden de insercion 
 
 3)  Explica a detalle la importancia de la función "hash" al implementar un Mapa / Tabla Hash, y por qué se le aplica la operación de módulo.
 
-  R=
+  R= es importante porque convierte una entrada en un indice dentro del rango permitido de la tabla asegurando un acceso eficiente a los datos, a operacion modulo se utiliza para garantizar que el indice generado este dentro del rango de indices validos de la tabla evitando desbordamientos
 
 4)	¿Por qué implementamos un conjunto mediante un árbol binario de búsqueda en lugar de utilizar una lista enlazada o un arreglo? Justifica bien tu respuesta.	
 
-  R=
+  R= un arbol binario de busqueda permite realizar operaciones como insercion, eliminacion y busqueda con complejidad 0 log n, mientras que una lista o arreglo tienen complejidad para buscar elemento de 0 n,ya que deben correr secuencialmente los elementos
 
 5)	Al crear un TDA / Librería ¿Por qué utilizamos void pointers en lugar de datos de un tipo específico?
 
-  R=
+  R= permiten que el tda o la libreria sea generica y pueda trabajar con cualquier tipo de dato
 
 6) Menciona una diferencia entre un conjunto y un mapa, desde el punto de vista de su comportamiento, no de su implementación:
 
-  R=
+  R= un conjunto solo almacena valores unicos, mientras que un mapa almacena pares de clave valor, donde cada clave es unica
 
 ******************************************************** Teoría 2: 4 preguntas de 10 puntos       /40 pts **************************************************************
 
